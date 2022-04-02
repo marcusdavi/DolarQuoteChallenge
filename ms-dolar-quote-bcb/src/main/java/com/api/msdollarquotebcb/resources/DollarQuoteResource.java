@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.api.msdollarquotebcb.dtos.ResponseApiBcbDollarQuoteDto;
+import com.api.msdollarquotebcb.dtos.DollarQuoteDto;
 import com.api.msdollarquotebcb.services.DollarQuoteService;
 
 @RestController
@@ -18,8 +18,8 @@ public class DollarQuoteResource {
     DollarQuoteService service;
 
     @GetMapping
-    public ResponseEntity<ResponseApiBcbDollarQuoteDto> findQuote(@RequestParam String dateForm) {
-	return ResponseEntity.ok(service.getDollarQuotes(dateForm));
+    public ResponseEntity<DollarQuoteDto> findQuote(@RequestParam String dateForm) {
+	return ResponseEntity.ok(service.getDollarQuote(dateForm));
     }
 
 }

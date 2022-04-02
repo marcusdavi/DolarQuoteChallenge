@@ -4,11 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
+import com.api.msdollarquotebcb.dtos.DollarQuoteDto;
 import com.api.msdollarquotebcb.dtos.ResponseApiBcbDollarQuoteDto;
 import com.api.msdollarquotebcb.exception.NotBusinessDayException;
 import com.api.msdollarquotebcb.services.BcbService;
-import com.api.msdollarquotebcb.services.DateUtil;
 import com.api.msdollarquotebcb.services.DollarQuoteService;
+import com.api.msdollarquotebcb.utils.DateUtil;
 
 @Service
 public class DollarQuoteServiceImpl implements DollarQuoteService {
@@ -17,7 +18,7 @@ public class DollarQuoteServiceImpl implements DollarQuoteService {
     BcbService bcbService;
 
     @Override
-    public ResponseApiBcbDollarQuoteDto getDollarQuotes(String dateForm) {
+    public DollarQuoteDto getDollarQuote(String dateForm) {
 
 	DateUtil.isDateValid(dateForm);
 
@@ -27,7 +28,7 @@ public class DollarQuoteServiceImpl implements DollarQuoteService {
 	    throw new NotBusinessDayException(dateForm);
 	}
 
-	return dollarQuote;
+	return dollarQuote.getQuote().get(0);
     }
 
 }

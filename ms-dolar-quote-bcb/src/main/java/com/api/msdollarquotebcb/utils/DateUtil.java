@@ -1,4 +1,4 @@
-package com.api.msdollarquotebcb.services;
+package com.api.msdollarquotebcb.utils;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -17,5 +17,7 @@ public final class DateUtil {
 	LocalDate.parse(strDate, dateTimeFormatter);
 
     }
+
+
 
 }

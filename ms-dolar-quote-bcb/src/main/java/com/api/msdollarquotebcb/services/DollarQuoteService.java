@@ -1,9 +1,9 @@
 package com.api.msdollarquotebcb.services;
 
-import com.api.msdollarquotebcb.dtos.ResponseApiBcbDollarQuoteDto;
+import com.api.msdollarquotebcb.dtos.DollarQuoteDto;
 
 public interface DollarQuoteService {
     
-    ResponseApiBcbDollarQuoteDto getDollarQuotes(String dateForm);
+    DollarQuoteDto getDollarQuote(String dateForm);
 
 }
