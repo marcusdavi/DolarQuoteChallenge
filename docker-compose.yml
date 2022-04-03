@@ -1,6 +1,7 @@
 version: '2'
 networks:
-  dollar:
+   spring-cloud-network:
+     driver: bridge
 services:
   two-dollars:
     build:
@@ -9,7 +10,7 @@ services:
     ports:
       - 8081:8081
     networks:
-      - dollar
+      - spring-cloud-network
     depends_on:
       - dollar-quote-api
   dollar-quote-api:
@@ -19,6 +20,6 @@ services:
     ports:
       - 8082:8082
     networks:
-      - dollar
+      - spring-cloud-network
 
 
