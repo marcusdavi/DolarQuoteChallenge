@@ -10,6 +10,7 @@ import org.springframework.web.client.RestTemplate;
 
 import com.api.msdollartwodays.dtos.ResponseDollarQuoteApiDto;
 import com.api.msdollartwodays.services.DollarQuoteApiService;
+import com.api.msdollartwodays.utils.DateUtil;
 
 @Service
 public class DollarQuoteApiServiceImpl implements DollarQuoteApiService {
@@ -22,9 +23,11 @@ public class DollarQuoteApiServiceImpl implements DollarQuoteApiService {
     @Override
     public ResponseDollarQuoteApiDto getDollarQuoteDay(String date) {
 	HttpHeaders httpHeaders = new HttpHeaders();
+	
+	String paramDate = DateUtil.formatDateToParamAPI(date);
 
 	ResponseEntity<ResponseDollarQuoteApiDto> response = restTemplate.exchange(MS_DOLLAR_QUOTE_DAY_URL, HttpMethod.GET,
-		new HttpEntity<>(httpHeaders), ResponseDollarQuoteApiDto.class, date);
+		new HttpEntity<>(httpHeaders), ResponseDollarQuoteApiDto.class, paramDate);
 
 	return response.getBody();
     }

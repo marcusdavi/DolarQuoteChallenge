@@ -9,13 +9,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public final class DateUtil {
 
-    private static final String DATE_FORMAT = "MM-dd-yyyy";
+    private static final String DATE_FORMAT_PARAM_API = "MM-dd-yyyy";
     private static final String DATE_FORMAT_BR = "dd/MM/yyyy";
     private static final String DATE_FORMAT_API = "yyyy-MM-dd";
 
     public static void isDateValid(String strDate) {
 
-	DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern(DATE_FORMAT);
+	DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern(DATE_FORMAT_BR);
 
 	LocalDate.parse(strDate, dateTimeFormatter);
 
@@ -26,19 +26,27 @@ public final class DateUtil {
 
 	DateTimeFormatter dateFormatBR = DateTimeFormatter.ofPattern(DATE_FORMAT_BR);
 
-	return dateFormatBR.format(stringToLocalDateAPI(strOnlyDate));
+	return dateFormatBR.format(stringToLocalDateReturnAPI(strOnlyDate));
 
     }
 
-    public static LocalDate stringToLocalDate(String strDate) {
+    public static String formatDateToParamAPI(String strDateUser) {
+	DateTimeFormatter dateFormatParamAPI = DateTimeFormatter.ofPattern(DATE_FORMAT_PARAM_API);
+	LocalDate dateUser = stringToLocalDate(strDateUser);
 
-	DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern(DATE_FORMAT);
+	return dateFormatParamAPI.format(dateUser);
+
+    }
+
+    private static LocalDate stringToLocalDate(String strDate) {
+
+	DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern(DATE_FORMAT_BR);
 
 	return LocalDate.parse(strDate, dateTimeFormatter);
 
     }
 
-    public static LocalDate stringToLocalDateAPI(String strDate) {
+    private static LocalDate stringToLocalDateReturnAPI(String strDate) {
 
 	DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern(DATE_FORMAT_API);
 
@@ -46,9 +54,9 @@ public final class DateUtil {
 
     }
 
-    public static String localDateToString(LocalDate date) {
+    private static String localDateToString(LocalDate date) {
 
-	DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern(DATE_FORMAT);
+	DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern(DATE_FORMAT_BR);
 
 	return dateFormat.format(date);
 
@@ -58,11 +66,7 @@ public final class DateUtil {
 
 	LocalDate localDate = stringToLocalDate(strDate).minusDays(1);
 
-	if (localDate.getDayOfWeek().equals(DayOfWeek.SUNDAY)) {
-	    return DateUtil.localDateToString(localDate.minusDays(2));
-	} else if (localDate.getDayOfWeek().equals(DayOfWeek.SATURDAY)) {
-	    return DateUtil.localDateToString(localDate.minusDays(1));
-	}
+	backtoBeforeWeekend(localDate);
 
 	return DateUtil.localDateToString(localDate);
 
@@ -81,14 +85,18 @@ public final class DateUtil {
 
 	LocalDate localDate = stringToLocalDate(strDate).minusDays(days);
 
-	if (localDate.getDayOfWeek().equals(DayOfWeek.SUNDAY)) {
-	    return DateUtil.localDateToString(localDate.minusDays(2));
-	} else if (localDate.getDayOfWeek().equals(DayOfWeek.SATURDAY)) {
-	    return DateUtil.localDateToString(localDate.minusDays(1));
-	}
+	backtoBeforeWeekend(localDate);
 
 	return DateUtil.localDateToString(localDate);
 
+    }
+
+    private static void backtoBeforeWeekend(LocalDate localDate) {
+	if (localDate.getDayOfWeek().equals(DayOfWeek.SUNDAY)) {
+	    DateUtil.localDateToString(localDate.minusDays(2));
+	} else if (localDate.getDayOfWeek().equals(DayOfWeek.SATURDAY)) {
+	    DateUtil.localDateToString(localDate.minusDays(1));
+	}
     }
 
 }

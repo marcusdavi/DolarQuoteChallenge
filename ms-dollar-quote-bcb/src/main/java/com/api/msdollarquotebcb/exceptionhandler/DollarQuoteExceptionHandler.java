@@ -35,8 +35,7 @@ public class DollarQuoteExceptionHandler extends ResponseEntityExceptionHandler 
     @ExceptionHandler({ NotBusinessDayException.class })
     public ResponseEntity<Object> notBusinessDayException(NotBusinessDayException ex, WebRequest request) {
 
-	String userMessage = messageSource.getMessage("not.business.date", new Object[] { ex.getMessage() },
-		LocaleContextHolder.getLocale());
+	String userMessage = messageSource.getMessage("not.business.date", null, LocaleContextHolder.getLocale());
 
 	return handleExceptionInternal(ex, userMessage, new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
 
