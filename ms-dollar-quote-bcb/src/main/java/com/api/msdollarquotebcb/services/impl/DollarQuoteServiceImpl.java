@@ -7,6 +7,7 @@ import org.springframework.util.CollectionUtils;
 import com.api.msdollarquotebcb.dtos.DollarQuoteDto;
 import com.api.msdollarquotebcb.dtos.ResponseApiBcbDollarQuoteDto;
 import com.api.msdollarquotebcb.exception.NotBusinessDayException;
+import com.api.msdollarquotebcb.exception.TodayOrFutureException;
 import com.api.msdollarquotebcb.services.BcbService;
 import com.api.msdollarquotebcb.services.DollarQuoteService;
 import com.api.msdollarquotebcb.utils.DateUtil;
@@ -21,6 +22,10 @@ public class DollarQuoteServiceImpl implements DollarQuoteService {
     public DollarQuoteDto getDollarQuote(String dateForm) {
 
 	DateUtil.isDateValid(dateForm);
+
+	if (DateUtil.isEqualOrAfterToday(dateForm)) {
+	    throw new TodayOrFutureException(dateForm);
+	}
 
 	ResponseApiBcbDollarQuoteDto dollarQuote = bcbService.getCotacaoDolarDia(dateForm);
 

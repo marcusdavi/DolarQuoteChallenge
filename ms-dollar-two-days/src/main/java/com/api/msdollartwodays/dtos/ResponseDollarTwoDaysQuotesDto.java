@@ -1,7 +1,6 @@
 package com.api.msdollartwodays.dtos;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,11 +11,11 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ResponseDollarQuoteDto {
+public class ResponseDollarTwoDaysQuotesDto {
 
     private BigDecimal valorCotacaoDataInformada;
-    private LocalDate dataCotacaoInformada;
+    private String dataCotacaoInformada;
     private BigDecimal valorCotacaoDiaUtilAnterior;
-    private LocalDate dataCotacaoDiaUtilAnterior;
+    private String dataCotacaoDiaUtilAnterior;
 
 }

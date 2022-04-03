@@ -10,10 +10,10 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.api</groupId>
-	<artifactId>ms-dolar-two-days</artifactId>
+	<artifactId>ms-dollar-two-days</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>ms-dolar-two-days</name>
-	<description>Dolar Quote Two Days</description>
+	<name>ms-dollar-two-days</name>
+	<description>Dollar Quote Two Days</description>
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>

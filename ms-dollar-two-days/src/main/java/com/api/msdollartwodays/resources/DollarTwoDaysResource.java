@@ -7,18 +7,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.api.msdollartwodays.dtos.ResponseDollarQuoteDto;
-import com.api.msdollartwodays.services.DollarQuoteService;
+import com.api.msdollartwodays.dtos.ResponseDollarTwoDaysQuotesDto;
+import com.api.msdollartwodays.services.DollarTwoDaysService;
 
 @RestController
 @RequestMapping("/dollar-two")
-public class DollarQuoteResource {
+public class DollarTwoDaysResource {
 
     @Autowired
-    DollarQuoteService service;
+    DollarTwoDaysService service;
 
     @GetMapping
-    public ResponseEntity<ResponseDollarQuoteDto> getQuotes(@RequestParam String dateForm) {
+    public ResponseEntity<ResponseDollarTwoDaysQuotesDto> getQuotes(@RequestParam String dateForm) {
 	return ResponseEntity.ok(service.getDollarQuotes(dateForm));
     }
 

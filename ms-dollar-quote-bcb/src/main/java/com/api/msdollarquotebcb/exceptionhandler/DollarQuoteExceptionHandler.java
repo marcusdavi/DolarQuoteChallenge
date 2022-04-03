@@ -15,6 +15,7 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import com.api.msdollarquotebcb.exception.NotBusinessDayException;
+import com.api.msdollarquotebcb.exception.TodayOrFutureException;
 
 @ControllerAdvice
 public class DollarQuoteExceptionHandler extends ResponseEntityExceptionHandler {
@@ -27,7 +28,7 @@ public class DollarQuoteExceptionHandler extends ResponseEntityExceptionHandler 
 
 	String userMessage = messageSource.getMessage("invalid.date", null, LocaleContextHolder.getLocale());
 
-	return handleExceptionInternal(ex, new Error(userMessage), new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
+	return handleExceptionInternal(ex, userMessage, new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
 
     }
 
@@ -37,7 +38,17 @@ public class DollarQuoteExceptionHandler extends ResponseEntityExceptionHandler 
 	String userMessage = messageSource.getMessage("not.business.date", new Object[] { ex.getMessage() },
 		LocaleContextHolder.getLocale());
 
-	return handleExceptionInternal(ex, new Error(userMessage), new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
+	return handleExceptionInternal(ex, userMessage, new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
+
+    }
+
+    @ExceptionHandler({ TodayOrFutureException.class })
+    public ResponseEntity<Object> notTodayOrFutureException(TodayOrFutureException ex, WebRequest request) {
+
+	String userMessage = messageSource.getMessage("today.or.future.date", new Object[] { ex.getMessage() },
+		LocaleContextHolder.getLocale());
+
+	return handleExceptionInternal(ex, userMessage, new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
 
     }
 
@@ -45,26 +56,7 @@ public class DollarQuoteExceptionHandler extends ResponseEntityExceptionHandler 
     protected ResponseEntity<Object> handleMissingServletRequestParameter(MissingServletRequestParameterException ex,
 	    HttpHeaders headers, HttpStatus status, WebRequest request) {
 
-	return handleExceptionInternal(ex, new Error(ex.getMessage()), new HttpHeaders(), HttpStatus.BAD_REQUEST,
-		request);
-    }
-
-    public static class Error {
-
-	private String userMessage;
-
-	public Error(String userMessage) {
-	    this.userMessage = userMessage;
-	}
-
-	public String getUserMessage() {
-	    return userMessage;
-	}
-
-	public void setUserMessage(String userMessage) {
-	    this.userMessage = userMessage;
-	}
-
+	return handleExceptionInternal(ex, ex.getMessage(), new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
     }
 
 }

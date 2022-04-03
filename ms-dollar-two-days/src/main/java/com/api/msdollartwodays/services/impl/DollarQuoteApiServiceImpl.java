@@ -12,7 +12,7 @@ import com.api.msdollartwodays.dtos.ResponseDollarQuoteApiDto;
 import com.api.msdollartwodays.services.DollarQuoteApiService;
 
 @Service
-public class BcbServiceImpl implements DollarQuoteApiService {
+public class DollarQuoteApiServiceImpl implements DollarQuoteApiService {
 
     private static final String MS_DOLLAR_QUOTE_DAY_URL = "http://localhost:8081/ms-dollar-quote-api/dollar-quotes?dateForm={date}";
 

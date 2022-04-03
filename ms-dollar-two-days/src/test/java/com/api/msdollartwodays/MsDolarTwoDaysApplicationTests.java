@@ -1,10 +1,10 @@
-package com.api.msdolartwodays;
+package com.api.msdollartwodays;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class MsDolarTwoDaysApplicationTests {
+class MsDollarTwoDaysApplicationTests {
 
 	@Test
 	void contextLoads() {

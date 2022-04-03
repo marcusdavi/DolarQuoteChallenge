@@ -1,10 +1,10 @@
 package com.api.msdollarquotebcb.exception;
 
-public class NotDateEntered extends RuntimeException {
+public class TodayOrFutureException extends RuntimeException {
 
     private static final long serialVersionUID = 1L;
 
-    public NotDateEntered(String msg) {
+    public TodayOrFutureException(String msg) {
 	super(msg);
     }
 
