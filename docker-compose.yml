@@ -1,4 +1,6 @@
 version: '2'
+networks:
+  dollar:
 services:
   two-dollars:
     build:
@@ -6,6 +8,8 @@ services:
       dockerfile: Dockerfile
     ports:
       - 8081:8081
+    networks:
+      - dollar
     depends_on:
       - dollar-quote-api
   dollar-quote-api:
@@ -14,5 +18,7 @@ services:
       dockerfile: Dockerfile
     ports:
       - 8082:8082
+    networks:
+      - dollar
 
 
