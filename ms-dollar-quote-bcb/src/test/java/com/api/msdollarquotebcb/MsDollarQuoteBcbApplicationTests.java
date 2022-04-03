@@ -1,10 +1,10 @@
-package com.api.msdolarquotebcb;
+package com.api.msdollarquotebcb;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class MsDolarQuoteBcbApplicationTests {
+class MsDollarQuoteBcbApplicationTests {
 
 	@Test
 	void contextLoads() {
