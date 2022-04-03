@@ -1,7 +1,4 @@
 version: '2'
-networks:
-   spring-cloud-network:
-     driver: bridge
 services:
   two-dollars:
     build:
@@ -21,5 +18,7 @@ services:
       - 8082:8082
     networks:
       - spring-cloud-network
-
+networks:
+   spring-cloud-network:
+     driver: bridge
 
