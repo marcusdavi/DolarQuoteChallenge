@@ -30,14 +30,22 @@ The date entered must (Ms Dollar TwoDays):
 
 ## 3. Running 
 1. Clone repository.
-2. Access folder project ms-dollar-quote-bcb and generate jar --> Maven Build: clean package
-3. Access folder project ms-dollar-two-days and generate jar --> Maven Build: clean package
-4. in Terminal:
+2. Access folder project ms-dollar-quote-bcb:
+	* generate jar --> Maven Build: clean package
+	* In Terminal: 
 ```
-commands Docker very soon
+docker build -t ms-dollar-quote-bcb:v1 .
+docker run -p 8082:8082 ms-dollar-quote-bcb:v1
 ```
-5. Access Swagger
-6. Request Endpoint
+3. Access folder project ms-dollar-two-days:
+	* generate jar --> Maven Build: clean package
+	* In Terminal: 
+	```
+	docker build -t ms-dollar-two-days:v1 .
+	docker run -p 8081:8081 ms-dollar-two-days:v1
+	```
+4. Access Swagger
+5. Request Endpoint
 
 ## 4. Response
 ```
