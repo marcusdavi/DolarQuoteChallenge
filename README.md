@@ -13,7 +13,7 @@
   <img src="/solution.png">
 </p>
 
-## 3. Business Rules
+## 3. Validation Rules
 The date entered must (Ms Dollar TwoDays):
 
 1. be in dd/MM/yyyy format

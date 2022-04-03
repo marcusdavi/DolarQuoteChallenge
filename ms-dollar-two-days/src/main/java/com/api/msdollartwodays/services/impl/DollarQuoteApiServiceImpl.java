@@ -15,7 +15,7 @@ import com.api.msdollartwodays.utils.DateUtil;
 @Service
 public class DollarQuoteApiServiceImpl implements DollarQuoteApiService {
 
-    private static final String MS_DOLLAR_QUOTE_DAY_URL = "http://localhost:8081/ms-dollar-quote-api/dollar-quotes?dateForm={date}";
+    private static final String MS_DOLLAR_QUOTE_DAY_URL = "http://localhost:8082/ms-dollar-quote-api/dollar-quotes?dateForm={date}";
 
     @Autowired
     RestTemplate restTemplate;
