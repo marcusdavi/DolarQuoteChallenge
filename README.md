@@ -18,7 +18,7 @@ The date entered must (Ms Dollar TwoDays):
 
 1. be in dd/MM/yyyy format
 2. be a business day
-3. be a date before the current day, as we do not always have the current day's quote.
+3. be a date before the current day, as API it does not always have the current day's quote.
 
 ## 2. URLs
 * **Swagger**
