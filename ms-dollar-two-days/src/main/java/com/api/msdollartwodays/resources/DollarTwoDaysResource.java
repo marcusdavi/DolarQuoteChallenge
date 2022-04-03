@@ -11,7 +11,7 @@ import com.api.msdollartwodays.dtos.ResponseDollarTwoDaysQuotesDto;
 import com.api.msdollartwodays.services.DollarTwoDaysService;
 
 @RestController
-@RequestMapping("/dollar-two")
+@RequestMapping("/dollar-two-days")
 public class DollarTwoDaysResource {
 
     @Autowired

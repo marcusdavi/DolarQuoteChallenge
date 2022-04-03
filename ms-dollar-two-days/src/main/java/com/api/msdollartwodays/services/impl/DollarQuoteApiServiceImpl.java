@@ -1,10 +1,6 @@
 package com.api.msdollartwodays.services.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -22,14 +18,12 @@ public class DollarQuoteApiServiceImpl implements DollarQuoteApiService {
 
     @Override
     public ResponseDollarQuoteApiDto getDollarQuoteDay(String date) {
-	HttpHeaders httpHeaders = new HttpHeaders();
 	
 	String paramDate = DateUtil.formatDateToParamAPI(date);
 
-	ResponseEntity<ResponseDollarQuoteApiDto> response = restTemplate.exchange(MS_DOLLAR_QUOTE_DAY_URL, HttpMethod.GET,
-		new HttpEntity<>(httpHeaders), ResponseDollarQuoteApiDto.class, paramDate);
+	ResponseDollarQuoteApiDto response = restTemplate.getForObject(MS_DOLLAR_QUOTE_DAY_URL, ResponseDollarQuoteApiDto.class, paramDate);
 
-	return response.getBody();
+	return response;
     }
 
 }
