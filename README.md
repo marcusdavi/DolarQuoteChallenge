@@ -25,17 +25,17 @@ The date entered must (Ms Dollar TwoDays):
  1. Ms Dollar TwoDays -> http://localhost:8081/swagger-ui.html
  2. Ms Dollar Quote API -> http://localhost:8082/ms-dollar-quote-api/swagger-ui.html
 
-* Obs: The API swagger was made available for testing during development. 
-* Obs: For testing the final application, use the Ms Dollar Two Days swagger
+### Attention
+* The API swagger was made available for testing during development. 
+* For testing the final application, use the Ms Dollar Two Days swagger
 
 ## 3. Running 
 1. Clone repository.
-2. In IDE:
-* Import Maven project ms-dollar-quote-bcb
-* Import Maven project ms-dollar-two-days:
-* Run Applications with Spring Boot
-4. Access Swagger Ms Dollar TwoDays
-5. Request Endpoint
+2. In IDE - Import Maven project ms-dollar-quote-bcb
+3. In IDE - Import Maven project ms-dollar-two-days
+4. Run Both Applications with Spring Boot
+5. Access Swagger Ms Dollar TwoDays
+6. Request Endpoint
 
 ## 4. Response
 ```
