@@ -30,21 +30,11 @@ The date entered must (Ms Dollar TwoDays):
 
 ## 3. Running 
 1. Clone repository.
-2. Access folder project ms-dollar-quote-bcb:
-	* generate jar --> Maven Build: clean package
-	* In Terminal: 
-```
-docker build -t ms-dollar-quote-bcb:v1 .
-docker run -p 8082:8082 ms-dollar-quote-bcb:v1
-```
-3. Access folder project ms-dollar-two-days:
-	* generate jar --> Maven Build: clean package
-	* In Terminal: 
-	```
-	docker build -t ms-dollar-two-days:v1 .
-	docker run -p 8081:8081 ms-dollar-two-days:v1
-	```
-4. Access Swagger
+2. In IDE:
+* Import Maven project ms-dollar-quote-bcb
+* Import Maven project ms-dollar-two-days:
+* Run Applications with Spring Boot
+4. Access Swagger Ms Dollar TwoDays
 5. Request Endpoint
 
 ## 4. Response
