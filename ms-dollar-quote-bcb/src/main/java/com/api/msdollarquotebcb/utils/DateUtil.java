@@ -1,6 +1,5 @@
 package com.api.msdollarquotebcb.utils;
 
-import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -32,20 +31,6 @@ public final class DateUtil {
 	DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern(DATE_FORMAT);
 
 	return dateFormat.format(date);
-
-    }
-
-    public static LocalDate backToBusinessDay(String strDate) {
-
-	LocalDate localDate = stringToLocalDate(strDate);
-
-	if (localDate.getDayOfWeek().equals(DayOfWeek.SUNDAY)) {
-	    return localDate.minusDays(2);
-	} else if (localDate.getDayOfWeek().equals(DayOfWeek.SATURDAY)) {
-	    return localDate.minusDays(1);
-	}
-
-	return localDate;
 
     }
 

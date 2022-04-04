@@ -42,7 +42,7 @@ public class DollarTwoDaysServiceImpl implements DollarTwoDaysService {
 		dollarQuoteDay = bcbService.getDollarQuoteDay(dateBefore);
 		finded = true;
 	    } catch (HttpClientErrorException ex) {
-		dateBefore = DateUtil.minusDaysWithString(dateBefore, 1);
+		dateBefore = DateUtil.backToBusinessDayWithString(dateBefore);
 	    }
 	}
 

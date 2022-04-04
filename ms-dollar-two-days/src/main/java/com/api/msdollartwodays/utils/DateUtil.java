@@ -66,9 +66,9 @@ public final class DateUtil {
 
 	LocalDate localDate = stringToLocalDate(strDate).minusDays(1);
 
-	backtoBeforeWeekend(localDate);
+	String newLocalDate = backToBeforeWeekend(localDate);
 
-	return DateUtil.localDateToString(localDate);
+	return newLocalDate;
 
     }
 
@@ -81,22 +81,13 @@ public final class DateUtil {
 
     }
 
-    public static String minusDaysWithString(String strDate, int days) {
-
-	LocalDate localDate = stringToLocalDate(strDate).minusDays(days);
-
-	backtoBeforeWeekend(localDate);
-
-	return DateUtil.localDateToString(localDate);
-
-    }
-
-    private static void backtoBeforeWeekend(LocalDate localDate) {
+    private static String backToBeforeWeekend(LocalDate localDate) {
 	if (localDate.getDayOfWeek().equals(DayOfWeek.SUNDAY)) {
-	    DateUtil.localDateToString(localDate.minusDays(2));
+	    return DateUtil.localDateToString(localDate.minusDays(2));
 	} else if (localDate.getDayOfWeek().equals(DayOfWeek.SATURDAY)) {
-	    DateUtil.localDateToString(localDate.minusDays(1));
+	    return DateUtil.localDateToString(localDate.minusDays(1));
 	}
+	return DateUtil.localDateToString(localDate);
     }
 
 }
